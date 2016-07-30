@@ -21,7 +21,7 @@ public class ApiSdkJavaGeneratorTest {
         infoList.addAll(ApiManager.parseApi(DemoMockService.class, new MockServiceImpl()));
 
         new ApiSdkJavaGenerator.Builder().setPackagePrefix("net.pocrd.m.app.client")
-                .setOutputPath("/Users/rendong/workspace/service/dubbo-service-template/autotest/src/main/java/com/fengqu/m/app/client")
+                .setOutputPath("/home/admin/autogen")
                 .build().generateViaApiMethodInfo(infoList);
     }
 }
