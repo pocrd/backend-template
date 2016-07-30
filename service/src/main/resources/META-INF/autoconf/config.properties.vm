@@ -1,0 +1,7 @@
+net.pocrd.demo.datasource.url=${sfht.demo.db.url}
+net.pocrd.demo.datasource.username=${sfht.demo.db.username}
+net.pocrd.demo.datasource.password=${sfht.demo.db.password}
+net.pocrd.demo.log.home=${sfht.demo.log.home}
+dubbo.registry.url=${sfht.dubbo.registry.url}
+dubbo.export.timeout=${sfht.demo.dubbo.export.timeout}
+dubbo.reference.version=${sfht.demo.dubbo.reference.version}

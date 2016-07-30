@@ -1,0 +1,2 @@
+Api-Export: net.pocrd.demo.api.DemoService net.pocrd.demo.api.DemoMockService
+Api-Dependency-Type: dubbo
