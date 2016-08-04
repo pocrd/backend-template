@@ -26,7 +26,7 @@ public class GenerateTokenTest {
         callerInfo.key = "demo key".getBytes(ConstField.UTF8);
         callerInfo.securityLevel = SecurityType.RegisteredDevice.authorize(0);
         AESTokenHelper aesTokenHelper = new AESTokenHelper("eqHSs48SCL2VoGsW1lWvDWKQ8Vu71UZJyS7Dbf/e4zo=");
-        String tk = aesTokenHelper.generateStringUserToken(callerInfo);
+        String tk = aesTokenHelper.generateToken(callerInfo);
         System.out.println("tk:" + tk);
         CallerInfo callerInfo1 = aesTokenHelper.parseToken(tk);
         assertEquals(callerInfo.uid, callerInfo1.uid);
@@ -35,7 +35,7 @@ public class GenerateTokenTest {
         assertEquals(callerInfo.expire, callerInfo1.expire);
         assertArrayEquals(callerInfo.key, callerInfo1.key);
         assertEquals(callerInfo.securityLevel, callerInfo1.securityLevel);
-        String dtk = aesTokenHelper.generateStringDeviceToken(callerInfo);
+        String dtk = aesTokenHelper.generateToken(callerInfo);
         System.out.println("dtk:" + tk);
     }
 }

@@ -76,13 +76,14 @@ public class DemoServiceImpl implements DemoService {
     }
 
     @Override
-    public String testUserLogin(long deviceId, long userId) throws ServiceException {
-        System.out.println("deviceId:" + deviceId + ", userId:" + userId);
-        return "deviceId:" + deviceId + ", userId:" + userId;
+    public String testUserLogin() throws ServiceException {
+        DubboExtProperty.ClientCaller caller = DubboExtProperty.getClientCallerFromAttachment();
+        System.out.println("deviceId:" + caller.deviceId + ", userId:" + caller.userId);
+        return "deviceId:" + caller.deviceId + ", userId:" + caller.userId;
     }
 
     @Override
-    public String getResByThirdPartyId(String something) throws ServiceException {
+    public String getResByThirdPartyId(String thirdPartyId, String something) throws ServiceException {
         System.out.println("something:" + something);
         return something;
     }

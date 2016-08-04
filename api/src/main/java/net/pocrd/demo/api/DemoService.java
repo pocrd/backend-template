@@ -1,5 +1,6 @@
 package net.pocrd.demo.api;
 
+import net.pocrd.define.AutowireableParameter;
 import net.pocrd.demo.entity.DemoEntity;
 import net.pocrd.demo.entity.DemoEnum;
 import net.pocrd.demo.entity.DemoReturnCode;
@@ -45,16 +46,13 @@ public interface DemoService {
 
     @HttpApi(name = "demo.testUserLogin", desc = "demo user login api多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト",
              security = SecurityType.UserLogin, owner = "demo")
-    public String testUserLogin(
-            @ApiAutowired(CommonParameter.deviceId)
-            long deviceId,
-            @ApiAutowired(CommonParameter.userId)
-            long userId) throws ServiceException;
+    public String testUserLogin() throws ServiceException;
 
     @HttpApi(name = "demo.getResByThirdPartyId", desc = "demo getResByThirdPartyId多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト",
-             security = SecurityType.Integrated, owner = "demo",
-             allowThirdPartyIds = { 1 })
+             security = SecurityType.Integrated, owner = "demo")
     public String getResByThirdPartyId(
+            @ApiAutowired(AutowireableParameter.thirdPartyId)
+            String thirdPartyId,
             @ApiParameter(required = true, name = "in", desc = "输入参数多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト")
             String something) throws ServiceException;
 
