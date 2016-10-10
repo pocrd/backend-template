@@ -53,7 +53,6 @@
         <spring_version>4.0.5.RELEASE</spring_version>
         <dubbo_version>2.5.3-fengqu</dubbo_version>
         <mybatis_version>3.2.7</mybatis_version>
-        <mybatis_spring_version>1.2.2</mybatis_spring_version>
         <logback_version>1.1.2</logback_version>
         <zkclient_version>0.1</zkclient_version>
         <slf4j_version>1.7.7</slf4j_version>
@@ -317,12 +316,6 @@
                 <groupId>com.aliyun.openservices</groupId>
                 <artifactId>ons-client</artifactId>
                 <version>1.1.5</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.taobao.diamond</groupId>
-                <artifactId>diamond-client</artifactId>
-                <version>2.0.5.4-SNAPSHOT</version>
             </dependency>
 
             <dependency>
