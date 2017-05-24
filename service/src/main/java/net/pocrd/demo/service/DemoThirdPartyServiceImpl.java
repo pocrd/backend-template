@@ -1,7 +1,6 @@
 package net.pocrd.demo.service;
 
 import net.pocrd.demo.api.DemoThirdPartyService;
-import net.pocrd.entity.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +9,9 @@ import org.slf4j.LoggerFactory;
  */
 public class DemoThirdPartyServiceImpl implements DemoThirdPartyService {
     private static final Logger logger = LoggerFactory.getLogger(DemoThirdPartyServiceImpl.class);
+
     @Override
-    public int testThirdParty(int id) throws ServiceException{
+    public int testThirdParty(int id) {
         logger.info("id:{}", id);
         return id;
     }
