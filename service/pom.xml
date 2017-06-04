@@ -159,28 +159,28 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>com.alibaba.citrus.tool</groupId>
-                <artifactId>autoconfig-maven-plugin</artifactId>
-                <version>1.2</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>autoconfig</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <dest>target/classes</dest>
-                    <!-- <interactive>true</interactive> -->
-                    <descriptors>
-                        <includes>
-                            <include>**/META-INF/**/auto-config.xml</include>
-                        </includes>
-                    </descriptors>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+            <!--<groupId>com.alibaba.citrus.tool</groupId>-->
+            <!--<artifactId>autoconfig-maven-plugin</artifactId>-->
+            <!--<version>1.2</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>prepare-package</phase>-->
+            <!--<goals>-->
+            <!--<goal>autoconfig</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<dest>target/classes</dest>-->
+            <!--&lt;!&ndash; <interactive>true</interactive> &ndash;&gt;-->
+            <!--<descriptors>-->
+            <!--<includes>-->
+            <!--<include>**/META-INF/**/auto-config.xml</include>-->
+            <!--</includes>-->
+            <!--</descriptors>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
 
 
