@@ -1,1 +1,1 @@
-exceptionHandleProvider=com.yit.dubboext.ExceptionHandleProviderFilter
+exceptionHandleProvider=net.pocrd.dubboext.ExceptionHandleProviderFilter
