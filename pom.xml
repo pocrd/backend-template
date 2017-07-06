@@ -9,10 +9,10 @@
     <version>0.1.0-SNAPSHOT</version>
 
     <modules>
-        <module>demo-api</module>
-        <module>demo-service</module>
-        <module>demo-dao</module>
-        <module>demo-autotest</module>
+        <module>api</module>
+        <module>service</module>
+        <module>dao</module>
+        <module>autotest</module>
     </modules>
 
     <build>
@@ -70,12 +70,12 @@
         <dependencies>
             <dependency>
                 <groupId>net.pocrd</groupId>
-                <artifactId>demo-api</artifactId>
+                <artifactId>api</artifactId>
                 <version>${demo_version}</version>
             </dependency>
             <dependency>
                 <groupId>net.pocrd</groupId>
-                <artifactId>demo-dao</artifactId>
+                <artifactId>dao</artifactId>
                 <version>${demo_version}</version>
             </dependency>
 
