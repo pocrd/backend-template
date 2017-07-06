@@ -17,11 +17,11 @@
         </dependency>
         <dependency>
             <groupId>net.pocrd</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>demo-api</artifactId>
         </dependency>
         <dependency>
             <groupId>net.pocrd</groupId>
-            <artifactId>dao</artifactId>
+            <artifactId>demo-dao</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
