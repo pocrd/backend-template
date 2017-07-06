@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>autotest</artifactId>
+    <artifactId>demo-autotest</artifactId>
     <dependencies>
         <dependency>
             <groupId>net.pocrd</groupId>
