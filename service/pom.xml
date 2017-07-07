@@ -8,7 +8,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>service</artifactId>
+    <artifactId>demo-service</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -17,11 +17,11 @@
         </dependency>
         <dependency>
             <groupId>net.pocrd</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>demo-api</artifactId>
         </dependency>
         <dependency>
             <groupId>net.pocrd</groupId>
-            <artifactId>dao</artifactId>
+            <artifactId>demo-dao</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
