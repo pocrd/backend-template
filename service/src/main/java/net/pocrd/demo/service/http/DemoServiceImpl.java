@@ -8,6 +8,7 @@ import net.pocrd.demo.dao.mapper.DemoMapper;
 import net.pocrd.demo.entity.DemoEntity;
 import net.pocrd.demo.entity.DemoEnum;
 import net.pocrd.dubboext.DubboExtProperty;
+import net.pocrd.dubboext.TraceInfo;
 import net.pocrd.entity.ApiReturnCode;
 import net.pocrd.entity.ServiceException;
 import net.pocrd.entity.ServiceRuntimeException;
@@ -65,9 +66,8 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public String testUserLogin() {
-        DubboExtProperty.ClientCaller caller = DubboExtProperty.getClientCallerFromAttachment();
-        System.out.println("deviceId:" + caller.deviceId + ", userId:" + caller.userId);
-        return "deviceId:" + caller.deviceId + ", userId:" + caller.userId;
+        TraceInfo info = TraceInfo.getTraceInfo();
+        return info.userinfo;
     }
 
     @Override
