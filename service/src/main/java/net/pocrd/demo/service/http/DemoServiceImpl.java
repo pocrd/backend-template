@@ -37,6 +37,7 @@ public class DemoServiceImpl implements DemoService {
         DemoEntity result = null;
         result = new DemoEntity();
         DemoDTO demoDTO = demoMapper.queryEntity(name);
+        logger.info("say hello to " + name);
         demoDTO.setId(demoThirdPartyService.testThirdParty(demoDTO.getId()));
         evaluater.evaluate(result, demoDTO);
         return result;
