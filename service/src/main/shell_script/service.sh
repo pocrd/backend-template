@@ -16,7 +16,8 @@ if [ -z "$JAVA_HOME" ]; then
   JAVA_HOME=/usr/local/jdk
 fi
 
-JAVA_OPT_1="-server -Xms2g -Xmx2g -Xmn1g -XX:PermSize=128m -XX:MaxPermSize=320m"
+#JAVA_OPT_1="-server -Xms2g -Xmx2g -Xmn1g -XX:PermSize=128m -XX:MaxPermSize=320m"
+JAVA_OPT_1="-server -Xms512m -Xmx512m -Xmn256m -XX:PermSize=32m -XX:MaxPermSize=80m"
 JAVA_OPT_2="-XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:+DisableExplicitGC"
 #JAVA_OPT_3="-verbose:gc -Xloggc:${HOME}/demo_gc.log -XX:+PrintGCDetails"
 JAVA_OPT_4="-XX:-OmitStackTraceInFastThrow"
@@ -72,7 +73,7 @@ function stopServiceProcess {
          fi
       sleep 1
       done
-   echo "\n$SERVICE_NAME did not terminate within 10 seconds, sending SIGKILL..."
+   echo "$SERVICE_NAME did not terminate within 10 seconds, sending SIGKILL..."
    kill -s KILL $pid || return 1
    local killWaitTime=15
    for ((i=0; i<10; i++)); do
