@@ -7,6 +7,7 @@ import net.pocrd.demo.dao.dto.DemoDTO;
 import net.pocrd.demo.dao.mapper.DemoMapper;
 import net.pocrd.demo.entity.DemoEntity;
 import net.pocrd.demo.entity.DemoEnum;
+import net.pocrd.demo.entity.DemoReturnCode;
 import net.pocrd.dubboext.DubboExtProperty;
 import net.pocrd.dubboext.TraceInfo;
 import net.pocrd.entity.ApiReturnCode;
@@ -38,6 +39,9 @@ public class DemoServiceImpl implements DemoService {
         DemoEntity result = null;
         result = new DemoEntity();
         DemoDTO demoDTO = demoMapper.queryEntity(name);
+        if (demoDTO == null) {
+            throw new ServiceRuntimeException(DemoReturnCode.DEMO_USER_NOT_FOUND, "找不到用户" + name);
+        }
         logger.info("say hello to " + name);
         demoDTO.setId(demoThirdPartyService.testThirdParty(demoDTO.getId()));
         evaluater.evaluate(result, demoDTO);

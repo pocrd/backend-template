@@ -9,10 +9,11 @@ import net.pocrd.demo.entity.DemoReturnCode;
 import net.pocrd.demo.mock.MockDemoEntity;
 import net.pocrd.util.RawString;
 
-@ApiGroup(name = "demo", minCode = 1, maxCode = 1000000, codeDefine = DemoReturnCode.class, owner = "demo")
+@ApiGroup(name = "demo", minCode = 1000000, maxCode = 2000000, codeDefine = DemoReturnCode.class, owner = "demo")
 public interface DemoService {
     @HttpApi(name = "demo.sayHello", desc = "demo test多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト",
              security = SecurityType.None, owner = "demo")
+    @DesignedErrorCode(DemoReturnCode._C_DEMO_USER_NOT_FOUND)
     public DemoEntity sayHello(
             @ApiParameter(required = true, name = "name", desc = "say hello多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト") String name);
 
@@ -35,7 +36,7 @@ public interface DemoService {
 
     @HttpApi(name = "demo.testRegistedDevice", desc = "demo registed device多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト",
              security = SecurityType.RegisteredDevice, owner = "demo")
-    @DesignedErrorCode(DemoReturnCode._C_DEMO_DEVICE_DENIED)
+    @DesignedErrorCode(DemoReturnCode._C_DEMO_SOMETHING_WRONG)
     public String testRegistedDevice();
 
     @HttpApi(name = "demo.testUserLogin", desc = "demo user login api多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト",

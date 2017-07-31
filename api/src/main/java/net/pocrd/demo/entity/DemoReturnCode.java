@@ -10,12 +10,12 @@ public class DemoReturnCode extends AbstractReturnCode {
         super(desc, code);
     }
 
-    public final static int                _C_DEMO_UNKNOW_ERROR = 1;
-    public final static AbstractReturnCode DEMO_UNKNOW_ERROR    = new DemoReturnCode(
-            "demo unkown error多语言测试. \n en-us:multi-language test \nja-jp:多言語テスト", _C_DEMO_UNKNOW_ERROR);
+    public final static int                _C_DEMO_USER_NOT_FOUND = 1000001;
+    public final static AbstractReturnCode DEMO_USER_NOT_FOUND    = new DemoReturnCode(
+            "用户找不到. \n en-us:multi-language test \nja-jp:多言語テスト", _C_DEMO_USER_NOT_FOUND);
 
-    public final static int                _C_DEMO_DEVICE_DENIED = 100;
-    public final static AbstractReturnCode DEMO_DEVICE_DENIED    = new DemoReturnCode(
-            "device denied多语言测试. \n en-us:multi-language test \nja-jp:多言語テスト", _C_DEMO_DEVICE_DENIED);
+    public final static int                _C_DEMO_SOMETHING_WRONG = 1000100;
+    public final static AbstractReturnCode DEMO_SOMETHING_WRONG    = new DemoReturnCode(
+            "有哪里不对. \n en-us:multi-language test \nja-jp:多言語テスト", _C_DEMO_SOMETHING_WRONG);
 
 }
