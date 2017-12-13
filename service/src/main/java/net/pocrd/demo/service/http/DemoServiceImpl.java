@@ -5,9 +5,7 @@ import net.pocrd.demo.api.DemoService;
 import net.pocrd.demo.api.DemoThirdPartyService;
 import net.pocrd.demo.dao.dto.DemoDTO;
 import net.pocrd.demo.dao.mapper.DemoMapper;
-import net.pocrd.demo.entity.DemoEntity;
-import net.pocrd.demo.entity.DemoEnum;
-import net.pocrd.demo.entity.DemoReturnCode;
+import net.pocrd.demo.entity.*;
 import net.pocrd.dubboext.DubboExtProperty;
 import net.pocrd.dubboext.TraceInfo;
 import net.pocrd.entity.ApiReturnCode;
@@ -18,6 +16,9 @@ import net.pocrd.util.RawString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DemoServiceImpl implements DemoService {
     private static final Logger    logger    = LoggerFactory.getLogger(DemoServiceImpl.class);
@@ -95,5 +96,70 @@ public class DemoServiceImpl implements DemoService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Test for service injection
+     */
+    @Override
+    public ComplexTestEntity testApiInjectionR1(String userIds, String productIds, String name) {
+        return null;
+    }
+
+    @Override
+    public ComplexTestEntity testApiInjectionR2(String orderIds, String name) {
+        return null;
+    }
+
+    @Override
+    public ComplexTestEntity testApiInjectionR3(String rmaIds, String name) {
+        return null;
+    }
+
+    @Override
+    public ComplexTestEntity testApiInjectionR4(String name) {
+        return null;
+    }
+
+    @Override
+    public ComplexTestEntity testApiInjectionR5(String name) {
+        return null;
+    }
+
+    @Override
+    public ComplexTestEntity testApiInjectionR6(String rmaIds, String name) {
+        return null;
+    }
+
+    @Override
+    public ComplexTestEntity testApiInjectionR7(String name) {
+        return null;
+    }
+
+    @Override
+    public ComplexTestEntity testApiInjectionR8(String supplierIds, String activityIds, String name) {
+        return null;
+    }
+
+    private ComplexTestEntity newComplexTestEntity() {
+        ComplexTestEntity complexTestEntity = new ComplexTestEntity();
+        complexTestEntity.boolValue = true;
+        complexTestEntity.byteValue = 1;
+        complexTestEntity.charValue = 'a';
+        complexTestEntity.doubleValue = 1.0;
+        complexTestEntity.floatValue = 1;
+        complexTestEntity.shortValue = 1;
+        complexTestEntity.intValue = 1;
+        complexTestEntity.longValue = 1L;
+        SimpleTestEntity simpleTestEntity1 = new SimpleTestEntity();
+        simpleTestEntity1.strValue = "simple test entity1";
+        complexTestEntity.simpleTestEntity = simpleTestEntity1;
+        List<SimpleTestEntity> simpleTestEntityList = new ArrayList<SimpleTestEntity>();
+        SimpleTestEntity simpleTestEntity2 = new SimpleTestEntity();
+        simpleTestEntity2.strValue = "simple test entity2";
+        simpleTestEntityList.add(simpleTestEntity2);
+        complexTestEntity.simpleTestEntityList = simpleTestEntityList;
+
+        return complexTestEntity;
     }
 }
