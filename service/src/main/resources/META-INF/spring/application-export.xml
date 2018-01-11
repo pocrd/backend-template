@@ -29,6 +29,7 @@
         <property name="protocol" ref="dubboProtocolConfig"/>
         <property name="version" value="${dubbo.reference.version}"/>
         <property name="timeout" value="${dubbo.export.timeout}"/>
+        <property name="retries" value="0"/>
     </bean>
     <bean id="demoThirdPartyServiceExport" class="com.alibaba.dubbo.config.spring.ServiceBean">
         <property name="interface" value="net.pocrd.demo.api.DemoThirdPartyService"/>
@@ -38,5 +39,6 @@
         <property name="protocol" ref="dubboProtocolConfig"/>
         <property name="version" value="${dubbo.reference.version}"/>
         <property name="timeout" value="${dubbo.export.timeout}"/>
+        <property name="retries" value="0"/>
     </bean>
 </beans>

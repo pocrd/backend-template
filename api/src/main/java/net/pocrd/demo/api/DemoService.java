@@ -120,7 +120,7 @@ public interface DemoService {
         }
     }
 
-    // _mt=r1(r2/r3@1),r2(r4),r3@1(r5),r3@2(r5),r4,r5,r6(r5),r7,r8(r6/r7)
+    // _mt=r1:r2/r3@1,r2:r4,r3@1:r5,r3@2:r5,r4,r5,r6:r5,r7,r8:r6/r7
 
     @HttpApi(name = "demo.testApiInjectionR1", desc = "可以依赖与R2,R3的隐式返回值", security = SecurityType.None, owner = "demo")
     ComplexTestEntity testApiInjectionR1(
@@ -144,7 +144,7 @@ public interface DemoService {
     @HttpApi(name = "demo.testApiInjectionR3", desc = "可以依赖与R5的隐式返回值, 并提供R1所需的一个隐式参数", security = SecurityType.None, owner = "demo")
     @ParamExport("product.productIds")
     ComplexTestEntity testApiInjectionR3(
-            @ApiParameter(required = false, name = "rmaIds", desc = "以半角逗号分隔的售后id列表", serviceInject = RMAIdInjector.class)
+            @ApiAutowired(value = AutowireableParameter.serviceInjection, serviceInject = RMAIdInjector.class)
                     String rmaIds,
             @ApiParameter(required = true, name = "name", desc = "名称")
                     String name
@@ -182,7 +182,7 @@ public interface DemoService {
 
     @HttpApi(name = "demo.testApiInjectionR8", desc = "可以依赖与R6,R7的隐式返回值", security = SecurityType.None, owner = "demo")
     ComplexTestEntity testApiInjectionR8(
-            @ApiParameter(required = true, name = "supplierIds", desc = "以半角逗号分隔的供应商id列表", serviceInject = SupplierIdInjector.class)
+            @ApiAutowired(value = AutowireableParameter.serviceInjection, serviceInject = SupplierIdInjector.class)
                     String supplierIds,
             @ApiParameter(required = false, name = "activityIds", desc = "以半角逗号分隔的活动页id列表", serviceInject = ActivityIdInjector.class)
                     String activityIds,

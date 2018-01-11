@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
        default-lazy-init="true">
     <!--<bean id="demoThirdPartyService" class="com.alibaba.dubbo.config.spring.ReferenceBean">-->
-        <!--<property name="interface" value="net.pocrd.demo.api.DemoThirdPartyService"/>-->
-        <!--<property name="application" ref="dubboApplicationConfig"/>-->
-        <!--<property name="registry" ref="dubboRegistryConfig"/>-->
-        <!--<property name="timeout" value="${dubbo.export.timeout}"/>-->
-        <!--<property name="check" value="false"/>-->
-        <!--<property name="version" value="${dubbo.reference.version}"/>-->
+    <!--<property name="interface" value="net.pocrd.demo.api.DemoThirdPartyService"/>-->
+    <!--<property name="application" ref="dubboApplicationConfig"/>-->
+    <!--<property name="registry" ref="dubboRegistryConfig"/>-->
+    <!--<property name="timeout" value="${dubbo.export.timeout}"/>-->
+    <!--<property name="check" value="false"/>-->
+    <!--<property name="version" value="${dubbo.reference.version}"/>-->
+    <!--<property name="retries" value="0"/>-->
     <!--</bean>-->
 </beans>
