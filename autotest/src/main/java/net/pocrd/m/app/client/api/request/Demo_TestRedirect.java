@@ -1,15 +1,13 @@
 // Auto Generated.  DO NOT EDIT!
-    
+
 package net.pocrd.m.app.client.api.request;
+
+import com.google.gson.*;
 
 import net.pocrd.m.app.client.LocalException;
 import net.pocrd.m.app.client.BaseRequest;
 import net.pocrd.m.app.client.SecurityType;
 import net.pocrd.m.app.client.api.resp.*;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
 
 /**
  * test redirect多语言测试. 
@@ -32,15 +30,22 @@ ja-jp:多言語テスト A 多言語テスト, B 多言語テスト, C 多言語
      */
     public Demo_TestRedirect(String something, String another) {
         super("demo.testRedirect", SecurityType.None);
-        
+
         try {
             params.put("something", something);
             params.put("another", another);
         } catch(Exception e) {
             throw new LocalException("SERIALIZE_ERROR", LocalException.SERIALIZE_ERROR, e);
         }
-        
     }
+    
+    /**
+     * 私有的默认构造函数，请勿使用
+     */
+    private Demo_TestRedirect() {
+        super("demo.testRedirect", SecurityType.None);
+    }
+    
     /**
      * 当前请求有可能的异常返回值
      */
@@ -49,7 +54,7 @@ ja-jp:多言語テスト A 多言語テスト, B 多言語テスト, C 多言語
         }
         return response.code;
     }
-    
+
     /**
      * 不要直接调用这个方法，API使用者应该访问基类的getResponse()获取接口的返回值
      */

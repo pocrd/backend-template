@@ -1,15 +1,13 @@
 // Auto Generated.  DO NOT EDIT!
-    
+
 package net.pocrd.m.app.client.api.request;
+
+import com.google.gson.*;
 
 import net.pocrd.m.app.client.LocalException;
 import net.pocrd.m.app.client.BaseRequest;
 import net.pocrd.m.app.client.SecurityType;
 import net.pocrd.m.app.client.api.resp.*;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
 
 /**
  * demo registed device多语言测试. 
@@ -26,23 +24,23 @@ public class Demo_TestRegistedDevice extends BaseRequest<Api_StringResp> {
      */
     public Demo_TestRegistedDevice() {
         super("demo.testRegistedDevice", SecurityType.RegisteredDevice);
-        
     }
+    
     /**
      * 当前请求有可能的异常返回值
      */
     public int handleError() {
         switch (response.code) {
-            /* device denied多语言测试. 
+            /* 有哪里不对. 
  en-us:multi-language test 
 ja-jp:多言語テスト */
-            case ApiCode.DEMO_DEVICE_DENIED_100: {
+            case ApiCode.DEMO_SOMETHING_WRONG_1000100: {
                 break;
             }
         }
         return response.code;
     }
-    
+
     /**
      * 不要直接调用这个方法，API使用者应该访问基类的getResponse()获取接口的返回值
      */
@@ -54,7 +52,6 @@ ja-jp:多言語テスト */
             logger.error("Api_StringResp deserialize failed.", e);
         }
         return null;
-        
     }
     
 }

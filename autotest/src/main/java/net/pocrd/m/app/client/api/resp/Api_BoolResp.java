@@ -4,23 +4,18 @@ package net.pocrd.m.app.client.api.resp;
 import com.google.gson.*;
 import net.pocrd.m.app.client.util.JsonSerializable;
 
-public class Api_KeyValuePair implements JsonSerializable {
+public class Api_BoolResp implements JsonSerializable {
 
     /**
-     * 键
+     * 布尔类型返回值
      */
-    public String key;
-      
-    /**
-     * 值
-     */
-    public String value;
+    public boolean value;
       
 
     /**
      * 反序列化函数，用于从json字符串反序列化本类型实例
      */
-    public static Api_KeyValuePair deserialize(String json) {
+    public static Api_BoolResp deserialize(String json) {
         if (json != null && json.length() != 0) {
             return deserialize(new JsonParser().parse(json).getAsJsonObject());
         }
@@ -30,21 +25,15 @@ public class Api_KeyValuePair implements JsonSerializable {
     /**
      * 反序列化函数，用于从json节点对象反序列化本类型实例
      */
-    public static Api_KeyValuePair deserialize(JsonObject json) {
+    public static Api_BoolResp deserialize(JsonObject json) {
         if (json != null && !json.isJsonNull()) {
-            Api_KeyValuePair result = new Api_KeyValuePair();
+            Api_BoolResp result = new Api_BoolResp();
             JsonElement element = null;
             
-            /* 键 */
-            element = json.get("key");
-            if (element != null && !element.isJsonNull()) {
-                result.key = element.getAsString();
-            }
-              
-            /* 值 */
+            /* 布尔类型返回值 */
             element = json.get("value");
             if (element != null && !element.isJsonNull()) {
-                result.value = element.getAsString();
+                result.value = element.getAsBoolean();
             }
               
             return result;
@@ -58,11 +47,8 @@ public class Api_KeyValuePair implements JsonSerializable {
     public JsonObject serialize() {
         JsonObject json = new JsonObject();
         
-        /* 键 */
-        if (this.key != null) { json.addProperty("key", this.key); }
-          
-        /* 值 */
-        if (this.value != null) { json.addProperty("value", this.value); }
+        /* 布尔类型返回值 */
+        json.addProperty("value", this.value);
           
         return json;
     }

@@ -23,7 +23,7 @@ import java.util.Map.Entry;
  * Created by guankaiqiang521 on 2014/9/29.
  */
 public class DemoTest {
-    private static final String url          = "http://localhost:8080/m.api";
+    private static final String url          = "http://www.pocrd.net/m.api";
     private static final String deviceId     = "1414807058834";
     private static final String deviceSecret = "581bb3c7f2d09e4d2f07f69706fff13f261f4cfa2038cd2ab7bb46040ca2d568";
     private static final String deviceToken  = "jxpvuVNWcYb75UlLHC3QyptGUwn0V+LDzdi/GMTLcmGN1rmpX80ze7hRE8peb0dbjfUWi52dEoaZy6YCJZcF9L4f+2gJXMjncRCFhGY3AHo=";
@@ -44,8 +44,8 @@ public class DemoTest {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("debug.dubbo.url", "dubbo://10.32.184.32:20880/");
-        System.setProperty("debug.dubbo.version", "LATEST");
+        //System.setProperty("debug.dubbo.url", "dubbo://10.32.184.32:20880/");
+        //System.setProperty("debug.dubbo.version", "LATEST");
     }
 
     @Test
@@ -181,5 +181,27 @@ public class DemoTest {
         Assert.assertEquals(ApiCode.SUCCESS, testMock.getReturnCode());
         Assert.assertEquals(resp.id, 7654321);
         Assert.assertEquals(resp.name, "mock service test NAME");
+    }
+
+    // _mt=r1:r2/r3@1,r2:r4,r3@1:r5,r3@2:r5,r4,r5,r6:r5,r7,r8:r6/r7
+    @Test
+    public void testDependencies() {
+        Demo_TestApiInjectionR4 r4 = new Demo_TestApiInjectionR4();
+        r4.setName("R4");
+        Demo_TestApiInjectionR5 r5 = new Demo_TestApiInjectionR5("R5");
+        Demo_TestApiInjectionR6 r6 = Demo_TestApiInjectionR6.createDependencyBuilder().depends(r5).build();
+        r6.setName("R6");
+        Demo_TestApiInjectionR7 r7 = new Demo_TestApiInjectionR7();
+        r7.setName("R7");
+        Demo_TestApiInjectionR8 r8 = Demo_TestApiInjectionR8.createDependencyBuilder().depends(r6).depends(r7).build("R8");
+        Demo_TestApiInjectionR3 r3_1 = Demo_TestApiInjectionR3.createDependencyBuilder().depends(r5).build("R3_1");
+        Demo_TestApiInjectionR3 r3_2 = Demo_TestApiInjectionR3.createDependencyBuilder().depends(r5).build("R3_2");
+        Demo_TestApiInjectionR2 r2 = Demo_TestApiInjectionR2.createDependencyBuilder().depends(r4).build();
+        r2.setName("R2");
+        Demo_TestApiInjectionR1 r1 = Demo_TestApiInjectionR1.createDependencyBuilder().depends(r2).depends(r3_1).build("R1");
+
+        final BaseRequest[] reqs = new BaseRequest[] { r1, r2, r3_1, r3_2, r4, r5, r6, r7, r8 };
+        accessor.fillApiResponse(reqs);
+        System.out.println("result" + r1.getResponse());
     }
 }

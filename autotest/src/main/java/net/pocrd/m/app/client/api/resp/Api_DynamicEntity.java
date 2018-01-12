@@ -4,23 +4,23 @@ package net.pocrd.m.app.client.api.resp;
 import com.google.gson.*;
 import net.pocrd.m.app.client.util.JsonSerializable;
 
-public class Api_KeyValuePair implements JsonSerializable {
+public class Api_DynamicEntity implements JsonSerializable {
 
     /**
-     * 键
+     * 动态类型实体
      */
-    public String key;
+    public JsonSerializable entity;
       
     /**
-     * 值
+     * 动态类型的类型名
      */
-    public String value;
+    public String typeName;
       
 
     /**
      * 反序列化函数，用于从json字符串反序列化本类型实例
      */
-    public static Api_KeyValuePair deserialize(String json) {
+    public static Api_DynamicEntity deserialize(String json) {
         if (json != null && json.length() != 0) {
             return deserialize(new JsonParser().parse(json).getAsJsonObject());
         }
@@ -30,21 +30,15 @@ public class Api_KeyValuePair implements JsonSerializable {
     /**
      * 反序列化函数，用于从json节点对象反序列化本类型实例
      */
-    public static Api_KeyValuePair deserialize(JsonObject json) {
+    public static Api_DynamicEntity deserialize(JsonObject json) {
         if (json != null && !json.isJsonNull()) {
-            Api_KeyValuePair result = new Api_KeyValuePair();
+            Api_DynamicEntity result = new Api_DynamicEntity();
             JsonElement element = null;
             
-            /* 键 */
-            element = json.get("key");
+            /* 动态类型的类型名 */
+            element = json.get("typeName");
             if (element != null && !element.isJsonNull()) {
-                result.key = element.getAsString();
-            }
-              
-            /* 值 */
-            element = json.get("value");
-            if (element != null && !element.isJsonNull()) {
-                result.value = element.getAsString();
+                result.typeName = element.getAsString();
             }
               
             return result;
@@ -58,11 +52,11 @@ public class Api_KeyValuePair implements JsonSerializable {
     public JsonObject serialize() {
         JsonObject json = new JsonObject();
         
-        /* 键 */
-        if (this.key != null) { json.addProperty("key", this.key); }
+        /* 动态类型实体 */
+        if (this.entity != null) { json.add("entity", this.entity.serialize()); }
           
-        /* 值 */
-        if (this.value != null) { json.addProperty("value", this.value); }
+        /* 动态类型的类型名 */
+        if (this.typeName != null) { json.addProperty("typeName", this.typeName); }
           
         return json;
     }

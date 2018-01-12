@@ -1,11 +1,10 @@
 // Auto Generated.  DO NOT EDIT!
 package net.pocrd.m.app.client.api.resp;
-    
-import com.google.gson.JsonObject;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
-public class Api_DEMO_DemoEntity {
+import com.google.gson.*;
+import net.pocrd.m.app.client.util.JsonSerializable;
+
+public class Api_DEMO_DemoEntity implements JsonSerializable {
 
     /**
      * id多语言测试. 
@@ -21,16 +20,17 @@ ja-jp:多言語テスト
      */
     public String name;
       
+
     /**
      * 反序列化函数，用于从json字符串反序列化本类型实例
      */
     public static Api_DEMO_DemoEntity deserialize(String json) {
-        if (json != null && !json.isEmpty()) {
+        if (json != null && json.length() != 0) {
             return deserialize(new JsonParser().parse(json).getAsJsonObject());
         }
         return null;
     }
-    
+
     /**
      * 反序列化函数，用于从json节点对象反序列化本类型实例
      */
@@ -46,7 +46,7 @@ ja-jp:多言語テスト */
             if (element != null && !element.isJsonNull()) {
                 result.id = element.getAsInt();
             }
-      
+              
             /* name多语言测试. 
 en-us:multi-language test 
 ja-jp:多言語テスト */
@@ -54,12 +54,12 @@ ja-jp:多言語テスト */
             if (element != null && !element.isJsonNull()) {
                 result.name = element.getAsString();
             }
-      
+              
             return result;
         }
         return null;
     }
-    
+
     /**
      * 序列化函数，用于从对象生成数据字典
      */
@@ -74,7 +74,7 @@ ja-jp:多言語テスト */
         /* name多语言测试. 
 en-us:multi-language test 
 ja-jp:多言語テスト */
-        if(this.name != null) { json.addProperty("name", this.name); }
+        if (this.name != null) { json.addProperty("name", this.name); }
           
         return json;
     }
