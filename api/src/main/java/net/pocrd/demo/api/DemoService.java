@@ -54,8 +54,7 @@ public interface DemoService {
     @HttpApi(name = "demo.testRedirect", desc = "test redirect多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト",
              security = SecurityType.None, owner = "demo")
     RawString testRedirect(
-            @ApiParameter(required = true, name = "something", desc = "输入参数1多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト") DemoEnum something,
-            @EnumDef(DemoEnum.class)
+            @ApiParameter(required = true, name = "something", desc = "输入参数1多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト", enumDef = DemoEnum.class) String something,
             @ApiParameter(required = true, name = "another", desc = "输入参数2多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト") String another
     );
 

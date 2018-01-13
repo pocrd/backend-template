@@ -23,7 +23,7 @@ import java.util.Map.Entry;
  * Created by guankaiqiang521 on 2014/9/29.
  */
 public class DemoTest {
-    private static final String url          = "http://www.pocrd.net/m.api";
+    private static final String url          = "http://localhost:8080/m.api";
     private static final String deviceId     = "1414807058834";
     private static final String deviceSecret = "581bb3c7f2d09e4d2f07f69706fff13f261f4cfa2038cd2ab7bb46040ca2d568";
     private static final String deviceToken  = "jxpvuVNWcYb75UlLHC3QyptGUwn0V+LDzdi/GMTLcmGN1rmpX80ze7hRE8peb0dbjfUWi52dEoaZy6YCJZcF9L4f+2gJXMjncRCFhGY3AHo=";
@@ -44,8 +44,8 @@ public class DemoTest {
 
     @BeforeClass
     public static void init() {
-        //System.setProperty("debug.dubbo.url", "dubbo://10.32.184.32:20880/");
-        //System.setProperty("debug.dubbo.version", "LATEST");
+        System.setProperty("debug.dubbo.url", "dubbo://localhost:20880/");
+        System.setProperty("debug.dubbo.version", "LATEST");
     }
 
     @Test
