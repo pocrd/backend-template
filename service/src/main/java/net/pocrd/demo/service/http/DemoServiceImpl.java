@@ -87,7 +87,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public RawString testRedirect(String something, String other) {
-        DubboExtProperty.setRedirectUrl("http://www.fengqu.com/info.api");
+        DubboExtProperty.setRedirectUrl("http://www.pocrd.com/info.api");
         return new RawString("testRedirect");
     }
 
@@ -172,18 +172,20 @@ public class DemoServiceImpl implements DemoService {
         ComplexTestEntity complexTestEntity = new ComplexTestEntity();
         complexTestEntity.boolValue = true;
         complexTestEntity.byteValue = (byte)(Math.random() * Byte.MAX_VALUE);
-        complexTestEntity.charValue = (char)(Math.random() * Character.MAX_VALUE);
+        complexTestEntity.charValue = 'x';
         complexTestEntity.doubleValue = Math.random() * 1000;
         complexTestEntity.floatValue = (float)(Math.random() * 1000);
         complexTestEntity.shortValue = (short)(Math.random() * Short.MAX_VALUE);
         complexTestEntity.intValue = (int)(Math.random() * Integer.MAX_VALUE);
         complexTestEntity.longValue = (long)(Math.random() * Long.MAX_VALUE);
         SimpleTestEntity simpleTestEntity1 = new SimpleTestEntity();
-        simpleTestEntity1.strValue = "simple test entity1" + Math.random();
+        simpleTestEntity1.strValue = "simple test entity1 " + Math.random();
         complexTestEntity.simpleTestEntity = simpleTestEntity1;
         List<SimpleTestEntity> simpleTestEntityList = new ArrayList<SimpleTestEntity>();
         SimpleTestEntity simpleTestEntity2 = new SimpleTestEntity();
-        simpleTestEntity2.strValue = "simple test entity2" + Math.random();
+        simpleTestEntity2.strValue = "simple test entity2 " + Math.random();
+        simpleTestEntity2.intArray = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+        simpleTestEntityList.add(simpleTestEntity2);
         simpleTestEntityList.add(simpleTestEntity2);
         complexTestEntity.simpleTestEntityList = simpleTestEntityList;
         complexTestEntity.strValue = "complex test entity2" + Math.random();
