@@ -4,7 +4,10 @@ import net.pocrd.m.app.client.ApiAccessor;
 import net.pocrd.m.app.client.ApiContext;
 import net.pocrd.m.app.client.BaseRequest;
 import net.pocrd.m.app.client.api.request.*;
+import net.pocrd.m.app.client.api.resp.Api_DEMO_ComplexTestEntity;
 import net.pocrd.m.app.client.api.resp.Api_DEMO_DemoEntity;
+import net.pocrd.m.app.client.api.resp.Api_DEMO_SimpleTestEntity;
+import net.pocrd.m.app.client.api.resp.Api_KeyValueList;
 import net.pocrd.m.app.client.util.Base64Util;
 import net.pocrd.m.app.client.util.RsaHelper;
 import org.junit.Assert;
@@ -23,7 +26,8 @@ import java.util.Map.Entry;
  * Created by guankaiqiang521 on 2014/9/29.
  */
 public class DemoTest {
-    private static final String url          = "http://localhost:8080/m.api";
+    //    private static final String url          = "http://localhost:8080/m.api";
+    private static final String url          = "http://www.pocrd.net/m.api";
     private static final String deviceId     = "1414807058834";
     private static final String deviceSecret = "581bb3c7f2d09e4d2f07f69706fff13f261f4cfa2038cd2ab7bb46040ca2d568";
     private static final String deviceToken  = "jxpvuVNWcYb75UlLHC3QyptGUwn0V+LDzdi/GMTLcmGN1rmpX80ze7hRE8peb0dbjfUWi52dEoaZy6YCJZcF9L4f+2gJXMjncRCFhGY3AHo=";
@@ -44,8 +48,8 @@ public class DemoTest {
 
     @BeforeClass
     public static void init() {
-        System.setProperty("debug.dubbo.url", "dubbo://localhost:20880/");
-        System.setProperty("debug.dubbo.version", "LATEST");
+        //        System.setProperty("debug.dubbo.url", "dubbo://localhost:20880/");
+        //        System.setProperty("debug.dubbo.version", "LATEST");
     }
 
     @Test
@@ -202,6 +206,34 @@ public class DemoTest {
 
         final BaseRequest[] reqs = new BaseRequest[] { r1, r2, r3_1, r3_2, r4, r5, r6, r7, r8 };
         accessor.fillApiResponse(reqs);
-        System.out.println("result" + r1.getResponse());
+        System.out.println("result:" + r1.getResponse());
+        checkResponse(r1.getResponse());
+        checkResponse(r2.getResponse());
+        checkResponse(r3_1.getResponse());
+        checkResponse(r3_2.getResponse());
+        checkResponse(r4.getResponse());
+        checkResponse(r5.getResponse());
+        checkResponse(r6.getResponse());
+        checkResponse(r7.getResponse());
+        checkResponse(r8.getResponse());
+    }
+
+    private void checkResponse(Api_DEMO_ComplexTestEntity e) {
+        Assert.assertTrue(e.boolValue);
+        Assert.assertTrue(e.byteValue > 0);
+        Assert.assertEquals('x', e.charValue);
+        Assert.assertTrue(e.doubleValue > 0);
+        Assert.assertTrue(e.floatValue > 0);
+        Assert.assertTrue(e.shortValue > 0);
+        Assert.assertTrue(e.intValue > 0);
+        Assert.assertTrue(e.longValue > 0);
+        Assert.assertTrue(e.simpleTestEntity != null);
+        Assert.assertTrue(e.simpleTestEntity.strValue != null);
+        Assert.assertEquals(7, e.simpleTestEntity.intArray.length);
+        Assert.assertEquals(2, e.simpleTestEntityList.size());
+        Assert.assertEquals(Api_KeyValueList.class, e.dynamicEntity.entity.getClass());
+        Assert.assertEquals(2, e.dynamicEntityList.size());
+        Assert.assertEquals(Api_DEMO_SimpleTestEntity.class, e.dynamicEntityList.get(0).entity.getClass());
+        Assert.assertEquals(Api_KeyValueList.class, e.dynamicEntityList.get(1).entity.getClass());
     }
 }

@@ -24,9 +24,9 @@ public class Demo_TestRedirect extends BaseRequest<String> {
      * @param something 输入参数1多语言测试.  A this is A多语言测试. , B this is B多语言测试. , C this is C多语言测试. , D this is D多语言测试. 
 en-us:multi-language test  A multi-language test , B multi-language test , C multi-language test , D multi-language test 
 ja-jp:多言語テスト A 多言語テスト, B 多言語テスト, C 多言語テスト, D 多言語テスト
-     * @param another 输入参数2多语言测试.  A this is A多语言测试. , B this is B多语言测试. , C this is C多语言测试. , D this is D多语言测试. 
-en-us:multi-language test  A multi-language test , B multi-language test , C multi-language test , D multi-language test 
-ja-jp:多言語テスト A 多言語テスト, B 多言語テスト, C 多言語テスト, D 多言語テスト
+     * @param another 输入参数2多语言测试. 
+en-us:multi-language test 
+ja-jp:多言語テスト
      */
     public Demo_TestRedirect(String something, String another) {
         super("demo.testRedirect", SecurityType.None);
