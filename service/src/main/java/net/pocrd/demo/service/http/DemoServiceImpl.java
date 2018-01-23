@@ -15,6 +15,9 @@ import net.pocrd.entity.ApiReturnCode;
 import net.pocrd.entity.LongArrayStringInjector;
 import net.pocrd.entity.ServiceException;
 import net.pocrd.entity.ServiceRuntimeException;
+import net.pocrd.responseEntity.DynamicEntity;
+import net.pocrd.responseEntity.KeyValueList;
+import net.pocrd.responseEntity.KeyValuePair;
 import net.pocrd.util.EvaluaterProvider;
 import net.pocrd.util.RawString;
 import org.slf4j.Logger;
@@ -179,16 +182,38 @@ public class DemoServiceImpl implements DemoService {
         complexTestEntity.intValue = (int)(Math.random() * Integer.MAX_VALUE);
         complexTestEntity.longValue = (long)(Math.random() * Long.MAX_VALUE);
         SimpleTestEntity simpleTestEntity1 = new SimpleTestEntity();
-        simpleTestEntity1.strValue = "simple test entity1 " + Math.random();
+        simpleTestEntity1.strValue = "simple test entity1." + Math.random();
+        simpleTestEntity1.intArray = new int[] { 7, 6, 5, 4, 3, 2, 1 };
         complexTestEntity.simpleTestEntity = simpleTestEntity1;
         List<SimpleTestEntity> simpleTestEntityList = new ArrayList<SimpleTestEntity>();
         SimpleTestEntity simpleTestEntity2 = new SimpleTestEntity();
-        simpleTestEntity2.strValue = "simple test entity2 " + Math.random();
+        simpleTestEntity2.strValue = "simple test entity2." + Math.random();
         simpleTestEntity2.intArray = new int[] { 1, 2, 3, 4, 5, 6, 7 };
         simpleTestEntityList.add(simpleTestEntity2);
         simpleTestEntityList.add(simpleTestEntity2);
         complexTestEntity.simpleTestEntityList = simpleTestEntityList;
-        complexTestEntity.strValue = "complex test entity2" + Math.random();
+        complexTestEntity.strValue = "complex test entity3." + Math.random();
+        KeyValueList ste = new KeyValueList();
+        ste.keyValue = new ArrayList<KeyValuePair>(3);
+        ste.keyValue.add(new KeyValuePair("a", "b"));
+        ste.keyValue.add(new KeyValuePair("c", "d"));
+        complexTestEntity.dynamicEntity = new DynamicEntity<KeyValueList>(ste);
+        List<DynamicEntity> des = new ArrayList<DynamicEntity>(3);
+        {
+            SimpleTestEntity s = new SimpleTestEntity();
+            s.intArray = new int[] { 4, 1, 4 };
+            s.strValue = "kkkkkk";
+            DynamicEntity de1 = new DynamicEntity(s);
+            des.add(de1);
+
+            KeyValueList kvl = new KeyValueList();
+            kvl.keyValue = new ArrayList<KeyValuePair>(3);
+            kvl.keyValue.add(new KeyValuePair("x", "y"));
+            kvl.keyValue.add(new KeyValuePair("z", "$"));
+            DynamicEntity de2 = new DynamicEntity(kvl);
+            des.add(de2);
+        }
+        complexTestEntity.dynamicEntityList = des;
 
         return complexTestEntity;
     }
