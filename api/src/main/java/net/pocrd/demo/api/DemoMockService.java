@@ -16,7 +16,7 @@ import net.pocrd.demo.mock.MockServiceImpl;
 @ApiMockInterfaceImpl(MockServiceImpl.class)
 public interface DemoMockService {
     @HttpApi(name = "demo.testMockService", desc = "测试模拟服务. \n en-us:mock service test. \n ja-jp:モックサービス・テスト", security = SecurityType.None, owner = "demo")
-    public DemoEntity testMockService(
+    DemoEntity testMockService(
             @ApiParameter(required = true, name = "name", desc = "say hello多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト")
                     String name);
 }
