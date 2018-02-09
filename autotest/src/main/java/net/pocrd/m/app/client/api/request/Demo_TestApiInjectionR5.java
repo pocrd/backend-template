@@ -62,7 +62,7 @@ public class Demo_TestApiInjectionR5 extends BaseRequest<Api_DEMO_ComplexTestEnt
     
     /******************************************** 以下功能处理接口依赖 既A接口的输出作为B接口的输入 ********************************************/
     
-    private static final String[] exportParams = new String[] { "rma.userIds", "rma.rmaIds" };
+    private static final String[] exportParams = new String[] { "rma.userIds-net.pocrd.entity.LongArrayStringInjector$Data", "rma.rmaIds-net.pocrd.entity.LongArrayStringInjector$Data" };
 
     protected String[] getExportParams() {
         return exportParams;
