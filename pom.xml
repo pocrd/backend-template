@@ -10,6 +10,7 @@
 
     <modules>
         <module>api</module>
+        <module>mixer</module>
         <module>service</module>
         <module>dao</module>
         <module>autotest</module>
@@ -45,7 +46,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <parent_version>1.0.0</parent_version>
-        <api-util_version>2.3.0-SNAPSHOT</api-util_version>
+        <apigw-constraint_version>1.0.0-SNAPSHOT</apigw-constraint_version>
+        <apigw-core_version>1.0.0-SNAPSHOT</apigw-core_version>
         <!-- dependency versions -->
         <!-- 2nd party libs-->
         <demo_version>0.1.1-SNAPSHOT</demo_version>
@@ -81,8 +83,14 @@
 
             <dependency>
                 <groupId>net.pocrd</groupId>
-                <artifactId>api-util</artifactId>
-                <version>${api-util_version}</version>
+                <artifactId>apigw-constraint</artifactId>
+                <version>${apigw-constraint_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.pocrd</groupId>
+                <artifactId>apigw-core</artifactId>
+                <version>${apigw-core_version}</version>
             </dependency>
 
             <dependency>

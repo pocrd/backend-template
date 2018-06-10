@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>net.pocrd</groupId>
-            <artifactId>api-util</artifactId>
+            <artifactId>apigw-core</artifactId>
         </dependency>
         <dependency>
             <groupId>net.pocrd</groupId>

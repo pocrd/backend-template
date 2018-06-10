@@ -1,0 +1,2 @@
+Api-Mixer-Namespace: net.pocrd.demo.mixer
+Api-Dependency-Type: mixer
