@@ -2,14 +2,14 @@ package net.pocrd.demo.api;
 
 import net.pocrd.annotation.*;
 import net.pocrd.define.AutowireableParameter;
+import net.pocrd.define.LongArrayStringInjector;
 import net.pocrd.define.SecurityType;
 import net.pocrd.demo.entity.ComplexTestEntity;
 import net.pocrd.demo.entity.DemoEntity;
 import net.pocrd.demo.entity.DemoEnum;
 import net.pocrd.demo.entity.DemoReturnCode;
 import net.pocrd.demo.mock.MockDemoEntity;
-import net.pocrd.entity.LongArrayStringInjector;
-import net.pocrd.util.RawString;
+import net.pocrd.responseEntity.RawString;
 
 @ApiGroup(name = "demo", minCode = 1000000, maxCode = 2000000, codeDefine = DemoReturnCode.class, owner = "demo")
 public interface DemoService {

@@ -1,6 +1,6 @@
 package net.pocrd.demo.entity;
 
-import net.pocrd.entity.AbstractReturnCode;
+import net.pocrd.define.AbstractReturnCode;
 
 /**
  * Created by guankaiqiang521 on 2014/9/16.

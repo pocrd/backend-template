@@ -46,8 +46,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <parent_version>1.0.0</parent_version>
-        <apigw-constraint_version>1.0.0-SNAPSHOT</apigw-constraint_version>
-        <apigw-core_version>1.0.0-SNAPSHOT</apigw-core_version>
+        <apigw-constraint_version>1.0.1-SNAPSHOT</apigw-constraint_version>
+        <apigw-core_version>1.0.1-SNAPSHOT</apigw-core_version>
+        <apigw-sdk_version>0.1.0-SNAPSHOT</apigw-sdk_version>
         <!-- dependency versions -->
         <!-- 2nd party libs-->
         <demo_version>0.1.1-SNAPSHOT</demo_version>
@@ -72,13 +73,8 @@
         <dependencies>
             <dependency>
                 <groupId>net.pocrd</groupId>
-                <artifactId>demo-api</artifactId>
-                <version>${demo_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.pocrd</groupId>
-                <artifactId>demo-dao</artifactId>
-                <version>${demo_version}</version>
+                <artifactId>api-sdk</artifactId>
+                <version>${apigw-sdk_version}</version>
             </dependency>
 
             <dependency>

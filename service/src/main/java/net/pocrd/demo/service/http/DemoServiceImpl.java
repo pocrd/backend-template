@@ -1,6 +1,7 @@
 package net.pocrd.demo.service.http;
 
-import net.pocrd.define.Evaluater;
+import net.pocrd.define.Evaluator;
+import net.pocrd.define.LongArrayStringInjector;
 import net.pocrd.demo.api.DemoService;
 import net.pocrd.demo.api.DemoThirdPartyService;
 import net.pocrd.demo.dao.dto.DemoDTO;
@@ -12,14 +13,13 @@ import net.pocrd.demo.entity.SimpleTestEntity;
 import net.pocrd.dubboext.DubboExtProperty;
 import net.pocrd.dubboext.TraceInfo;
 import net.pocrd.entity.ApiReturnCode;
-import net.pocrd.entity.LongArrayStringInjector;
 import net.pocrd.entity.ServiceException;
 import net.pocrd.entity.ServiceRuntimeException;
 import net.pocrd.responseEntity.DynamicEntity;
 import net.pocrd.responseEntity.KeyValueList;
 import net.pocrd.responseEntity.KeyValuePair;
-import net.pocrd.util.EvaluaterProvider;
-import net.pocrd.util.RawString;
+import net.pocrd.responseEntity.RawString;
+import net.pocrd.util.EvaluatorProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class DemoServiceImpl implements DemoService {
     private static final Logger    logger    = LoggerFactory.getLogger(DemoServiceImpl.class);
-    private static final Evaluater evaluater = EvaluaterProvider.getEvaluater(DemoEntity.class, DemoDTO.class);
+    private static final Evaluator evaluater = EvaluatorProvider.getEvaluator(DemoEntity.class, DemoDTO.class);
     @Autowired
     private DemoMapper            demoMapper;
     @Autowired

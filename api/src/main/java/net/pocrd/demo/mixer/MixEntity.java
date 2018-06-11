@@ -7,17 +7,18 @@ import java.util.List;
  */
 public class MixEntity {
     public static class Result {
+        public A a;
+        public B b;
+    }
+
+    public static class A {
+        public List<A> ps;
+        public A       p;
 
     }
 
-    public static class P1 {
-        public List<P1> ps;
-        public P1       p;
-
-    }
-
-    public static class P2 {
-        public List<P2> ps;
-        public P2       p;
+    public static class B {
+        public List<B> ps;
+        public B       p;
     }
 }

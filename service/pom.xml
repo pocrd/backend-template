@@ -18,10 +18,12 @@
         <dependency>
             <groupId>net.pocrd</groupId>
             <artifactId>demo-api</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>net.pocrd</groupId>
             <artifactId>demo-dao</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

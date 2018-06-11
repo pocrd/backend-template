@@ -1,9 +1,8 @@
 package net.pocrd.demo.service.test;
 
-import net.pocrd.demo.api.DemoService;
-import net.pocrd.demo.service.http.DemoServiceImpl;
 import net.pocrd.core.ApiDocumentationHelper;
 import net.pocrd.core.ApiManager;
+import net.pocrd.demo.api.DemoService;
 import net.pocrd.entity.ApiMethodInfo;
 import org.junit.Test;
 
@@ -18,9 +17,9 @@ public class ApiDefinitionTest {
         ApiManager manager = new ApiManager();
         ApiDocumentationHelper apiDoc = new ApiDocumentationHelper();
         List<ApiMethodInfo> apis = null;
-        apis = ApiManager.parseApi(DemoService.class, new DemoServiceImpl());
+        apis = ApiManager.parseApi(DemoService.class);
         apiDoc.getDocument(apis.toArray(new ApiMethodInfo[apis.size()]));
-        manager.register(apis);
+        manager.register("api definition test", apis, new Object());
         System.out.println(apis.size());
     }
 }

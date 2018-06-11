@@ -14,7 +14,6 @@
         <dependency>
             <groupId>net.pocrd</groupId>
             <artifactId>api-sdk</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
