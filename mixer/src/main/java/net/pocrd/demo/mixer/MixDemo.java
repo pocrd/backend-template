@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by rendong on 2018/5/2.
  */
-@HttpDataMixer(name = "mix_A_B_C", desc = "demo for data mixer", owner = "", pagePath = "/index.html")
+@HttpDataMixer(name = "mix_A_B_C", desc = "demo for data mixer", owner = "pocrd", pagePath = "/index.html")
 public class MixDemo {
 
     @Description("demo entity多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト")
@@ -65,12 +65,21 @@ public class MixDemo {
 
     @Description("result")
     public static class Result implements Serializable {
-        @Description("all in one")
-        public String allinone;
+        @Description("a")
+        public DemoEntity a;
+
+        @Description("b")
+        public ComplexTestEntity b;
+
+        @Description("c")
+        public SimpleTestEntity c;
     }
 
-    public Result mix(DemoEntity p1, ComplexTestEntity p2, SimpleTestEntity p3) {
-
-        return null;
+    public static Result mix(DemoEntity p1, ComplexTestEntity p2, SimpleTestEntity p3) {
+        Result r = new Result();
+        r.a = p1;
+        r.b = p2;
+        r.c = p3;
+        return r;
     }
 }
