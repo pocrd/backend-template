@@ -2,12 +2,11 @@
 
 package net.pocrd.m.app.client.api.request;
 
-import com.google.gson.*;
-
-import net.pocrd.m.app.client.LocalException;
+import com.google.gson.JsonObject;
 import net.pocrd.m.app.client.BaseRequest;
+import net.pocrd.m.app.client.LocalException;
 import net.pocrd.m.app.client.SecurityType;
-import net.pocrd.m.app.client.api.resp.*;
+import net.pocrd.m.app.client.api.resp.Api_StringResp;
 
 /**
  * demo getResByThirdPartyId多语言测试. 
@@ -18,7 +17,7 @@ ja-jp:多言語テスト
  *
  */
 public class Demo_GetResByThirdPartyId extends BaseRequest<Api_StringResp> {
-    
+      
     /**
      * 当前请求的构造函数，以下参数为该请求的必填参数
      * @param in 输入参数多语言测试. 

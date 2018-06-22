@@ -1,7 +1,9 @@
 // Auto Generated.  DO NOT EDIT!
 package net.pocrd.m.app.client.api.resp;
 
-import com.google.gson.*;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import net.pocrd.m.app.client.util.JsonSerializable;
 
 public class Api_DynamicEntity implements JsonSerializable {

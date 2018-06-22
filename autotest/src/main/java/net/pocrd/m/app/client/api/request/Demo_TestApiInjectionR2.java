@@ -2,12 +2,11 @@
 
 package net.pocrd.m.app.client.api.request;
 
-import com.google.gson.*;
-
-import net.pocrd.m.app.client.LocalException;
+import com.google.gson.JsonObject;
 import net.pocrd.m.app.client.BaseRequest;
+import net.pocrd.m.app.client.LocalException;
 import net.pocrd.m.app.client.SecurityType;
-import net.pocrd.m.app.client.api.resp.*;
+import net.pocrd.m.app.client.api.resp.Api_DEMO_ComplexTestEntity;
 
 /**
  * 可以依赖与R4的隐式返回值, 并提供R1所需的一个隐式参数
@@ -16,7 +15,7 @@ import net.pocrd.m.app.client.api.resp.*;
  *
  */
 public class Demo_TestApiInjectionR2 extends BaseRequest<Api_DEMO_ComplexTestEntity> {
-    
+      
     /**
      * 当前请求的构造函数，以下参数为该请求的必填参数
      */
@@ -72,13 +71,13 @@ public class Demo_TestApiInjectionR2 extends BaseRequest<Api_DEMO_ComplexTestEnt
     
     /******************************************** 以下功能处理接口依赖 既A接口的输出作为B接口的输入 ********************************************/
     
-    private static final String[] exportParams = new String[] { "user.userIds-net.pocrd.entity.LongArrayStringInjector$Data" };
+    private static final String[] exportParams = new String[] { "user.userIds-net.pocrd.define.LongArrayStringInjector$Data" };
 
     protected String[] getExportParams() {
         return exportParams;
     }
     
-    private static final String[] importParams = new String[] { "order.orderIds-net.pocrd.entity.LongArrayStringInjector$Data" };
+    private static final String[] importParams = new String[] { "order.orderIds-net.pocrd.define.LongArrayStringInjector$Data" };
 
     protected String[] getImportParams() {
         return importParams;

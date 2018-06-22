@@ -3,6 +3,7 @@ package net.pocrd.demo.autotest.test;
 import net.pocrd.m.app.client.ApiAccessor;
 import net.pocrd.m.app.client.ApiContext;
 import net.pocrd.m.app.client.BaseRequest;
+import net.pocrd.m.app.client.ServerResponse;
 import net.pocrd.m.app.client.api.request.*;
 import net.pocrd.m.app.client.api.resp.Api_DEMO_ComplexTestEntity;
 import net.pocrd.m.app.client.api.resp.Api_DEMO_DemoEntity;
@@ -26,8 +27,8 @@ import java.util.Map.Entry;
  * Created by guankaiqiang521 on 2014/9/29.
  */
 public class DemoTest {
-    //    private static final String url          = "http://localhost:8080/m.api";
-    private static final String url          = "http://www.pocrd.net/m.api";
+    private static final String url          = "http://localhost:8080/m.api";
+    //    private static final String url          = "http://www.pocrd.net/m.api";
     private static final String deviceId     = "1414807058834";
     private static final String deviceSecret = "581bb3c7f2d09e4d2f07f69706fff13f261f4cfa2038cd2ab7bb46040ca2d568";
     private static final String deviceToken  = "jxpvuVNWcYb75UlLHC3QyptGUwn0V+LDzdi/GMTLcmGN1rmpX80ze7hRE8peb0dbjfUWi52dEoaZy6YCJZcF9L4f+2gJXMjncRCFhGY3AHo=";
@@ -143,6 +144,27 @@ public class DemoTest {
             req.append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), "utf-8")).append("&");//进行url encoding
         }
         System.out.println("http://127.0.0.1:8080/m.api?" + req.toString());
+    }
+
+    @Test
+    public void testMixer() {
+        String v = "kkkpppnnnqqq";
+        final Demo_SayHello req1 = new Demo_SayHello("abc");
+        final Apitest_TestDemoSayHello req2 = new Apitest_TestDemoSayHello("abc");
+        final Apitest_TestSimpleTestEntityReturn req3 = new Apitest_TestSimpleTestEntityReturn(v);
+        final Mixer_Mix_A_B_C mix = new Mixer_Mix_A_B_C(req1, req2, req3);
+
+        ServerResponse sr = accessor.fillApiResponse(new BaseRequest[] { req1, req2, req3, mix });
+        Assert.assertEquals(0, sr.getReturnCode());
+        Assert.assertEquals(0, req1.getReturnCode());
+        Assert.assertEquals(0, req2.getReturnCode());
+        Assert.assertEquals(0, req3.getReturnCode());
+        Assert.assertEquals(v, req3.getResponse().strValue);
+        Assert.assertEquals(0, mix.getReturnCode());
+
+        Assert.assertEquals(req1.getResponse().serialize().toString(), mix.getResponse().a.serialize().toString());
+        Assert.assertEquals(req2.getResponse().serialize().toString(), mix.getResponse().b.serialize().toString());
+        Assert.assertEquals(req3.getResponse().serialize().toString(), mix.getResponse().c.serialize().toString());
     }
 
     @Test

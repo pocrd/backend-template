@@ -1,9 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 package net.pocrd.m.app.client.api.resp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.*;
 import net.pocrd.m.app.client.util.JsonSerializable;
 

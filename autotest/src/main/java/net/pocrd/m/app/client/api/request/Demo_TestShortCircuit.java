@@ -2,12 +2,11 @@
 
 package net.pocrd.m.app.client.api.request;
 
-import com.google.gson.*;
-
-import net.pocrd.m.app.client.LocalException;
+import com.google.gson.JsonObject;
 import net.pocrd.m.app.client.BaseRequest;
+import net.pocrd.m.app.client.LocalException;
 import net.pocrd.m.app.client.SecurityType;
-import net.pocrd.m.app.client.api.resp.*;
+import net.pocrd.m.app.client.api.resp.Api_DEMO_DemoEntity;
 
 /**
  * short circuit test多语言测试. 
@@ -18,7 +17,7 @@ ja-jp:多言語テスト
  *
  */
 public class Demo_TestShortCircuit extends BaseRequest<Api_DEMO_DemoEntity> {
-    
+      
     /**
      * 当前请求的构造函数，以下参数为该请求的必填参数
      * @param name say hello多语言测试. 

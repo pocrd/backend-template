@@ -2,12 +2,10 @@
 
 package net.pocrd.m.app.client.api.request;
 
-import com.google.gson.*;
-
-import net.pocrd.m.app.client.LocalException;
+import com.google.gson.JsonObject;
 import net.pocrd.m.app.client.BaseRequest;
+import net.pocrd.m.app.client.LocalException;
 import net.pocrd.m.app.client.SecurityType;
-import net.pocrd.m.app.client.api.resp.*;
 
 /**
  * test redirect多语言测试. 
@@ -18,7 +16,7 @@ ja-jp:多言語テスト
  *
  */
 public class Demo_TestRedirect extends BaseRequest<String> {
-    
+      
     /**
      * 当前请求的构造函数，以下参数为该请求的必填参数
      * @param something 输入参数1多语言测试.  A this is A多语言测试. , B this is B多语言测试. , C this is C多语言测试. , D this is D多语言测试. 

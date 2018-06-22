@@ -1,11 +1,14 @@
 // Auto Generated.  DO NOT EDIT!
 package net.pocrd.m.app.client.api.resp;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import net.pocrd.m.app.client.util.JsonSerializable;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.*;
-import net.pocrd.m.app.client.util.JsonSerializable;
 
 public class Api_Response implements JsonSerializable {
 
@@ -27,7 +30,7 @@ public class Api_Response implements JsonSerializable {
     /**
      * API调用状态，code的信息请参考ApiCode定义文件
      */
-    public List<Api_CallState> stateList;
+    public List<Api_CallState>    stateList;
     /**
      * 服务端返回的通知事件集合
      */

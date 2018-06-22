@@ -8,6 +8,8 @@ public class ApiCode {
     
     /* 未分配返回值 | 接口组名称: */
     public static final int NO_ASSIGN = -2147483648;
+    /* 子系统授权失败 | 接口组名称: */
+    public static final int SUBSYSTEM_AUTHENTICATION_FAILED = -410;
     /* 当前用户权限不足 | 接口组名称: */
     public static final int ROLE_DENIED = -400;
     /* 上传文件名错误 | 接口组名称: */
