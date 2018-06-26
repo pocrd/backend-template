@@ -63,69 +63,15 @@ public interface DemoService {
             @ApiParameter(required = true, name = "in", desc = "输入参数多语言测试. \nen-us:multi-language test \nja-jp:多言語テスト", ignoreForSecurity = true) String something
     );
 
-    class UserIdInjector extends LongArrayStringInjector {
-
-        @Override
-        public String getName() {
-            return "user.userIds";
-        }
-    }
-
-    class ProductIdInjector extends LongArrayStringInjector {
-
-        @Override
-        public String getName() {
-            return "product.productIds";
-        }
-    }
-
-    class OrderIdInjector extends LongArrayStringInjector {
-
-        @Override
-        public String getName() {
-            return "order.orderIds";
-        }
-    }
-
-    class RMAIdInjector extends LongArrayStringInjector {
-
-        @Override
-        public String getName() {
-            return "rma.rmaIds";
-        }
-    }
-
-    class RMAUserIdInjector extends LongArrayStringInjector {
-
-        @Override
-        public String getName() {
-            return "rma.userIds";
-        }
-    }
-
-    class SupplierIdInjector extends LongArrayStringInjector {
-
-        @Override
-        public String getName() {
-            return "supplier.supplierIds";
-        }
-    }
-
-    class ActivityIdInjector extends LongArrayStringInjector {
-
-        @Override
-        public String getName() {
-            return "cms.activityIds";
-        }
-    }
-
     // _mt=r1:r2/r3@1,r2:r4,r3@1:r5,r3@2:r5,r4,r5,r6:r5,r7,r8:r6/r7
 
     @HttpApi(name = "demo.testApiInjectionR1", desc = "可以依赖与R2,R3的隐式返回值", security = SecurityType.None, owner = "demo")
     ComplexTestEntity testApiInjectionR1(
-            @ApiParameter(required = true, name = "userIds", desc = "以半角逗号分隔的用户id列表", serviceInject = UserIdInjector.class)
+            @ApiParameter(required = true, name = "userIds", desc = "以半角逗号分隔的用户id列表",
+                          serviceInjectName = "user.userIds", serviceInjectDataType = LongArrayStringInjector.Data.class)
                     String userIds,
-            @ApiParameter(required = false, name = "productIds", desc = "以半角逗号分隔的商品id列表", serviceInject = ProductIdInjector.class)
+            @ApiParameter(required = false, name = "productIds", desc = "以半角逗号分隔的商品id列表",
+                          serviceInjectName = "product.productIds", serviceInjectDataType = LongArrayStringInjector.Data.class)
                     String productIds,
             @ApiParameter(required = true, name = "name", desc = "名称")
                     String name
@@ -134,7 +80,8 @@ public interface DemoService {
     @HttpApi(name = "demo.testApiInjectionR2", desc = "可以依赖与R4的隐式返回值, 并提供R1所需的一个隐式参数", security = SecurityType.None, owner = "demo")
     @ParamExport(name = "user.userIds", dataType = LongArrayStringInjector.Data.class)
     ComplexTestEntity testApiInjectionR2(
-            @ApiParameter(required = true, name = "orderIds", desc = "以半角逗号分隔的订单id列表", serviceInject = OrderIdInjector.class)
+            @ApiParameter(required = true, name = "orderIds", desc = "以半角逗号分隔的订单id列表",
+                          serviceInjectName = "order.orderIds", serviceInjectDataType = LongArrayStringInjector.Data.class)
                     String orderIds,
             @ApiParameter(required = false, name = "name", desc = "名称")
                     String name
@@ -143,7 +90,8 @@ public interface DemoService {
     @HttpApi(name = "demo.testApiInjectionR3", desc = "可以依赖与R5的隐式返回值, 并提供R1所需的一个隐式参数", security = SecurityType.None, owner = "demo")
     @ParamExport(name = "product.productIds", dataType = LongArrayStringInjector.Data.class)
     ComplexTestEntity testApiInjectionR3(
-            @ApiAutowired(value = AutowireableParameter.serviceInjection, serviceInject = RMAIdInjector.class)
+            @ApiAutowired(value = AutowireableParameter.serviceInjection,
+                          serviceInjectName = "rma.rmaIds", serviceInjectDataType = LongArrayStringInjector.Data.class)
                     String rmaIds,
             @ApiParameter(required = true, name = "name", desc = "名称")
                     String name
@@ -167,7 +115,8 @@ public interface DemoService {
     @HttpApi(name = "demo.testApiInjectionR6", desc = "可以依赖与R5的隐式返回值, 并提供R8所需的一个隐式参数", security = SecurityType.None, owner = "demo")
     @ParamExport(name = "supplier.supplierIds", dataType = LongArrayStringInjector.Data.class)
     ComplexTestEntity testApiInjectionR6(
-            @ApiParameter(required = true, name = "userIds", desc = "以半角逗号分隔的售后id列表", serviceInject = RMAUserIdInjector.class)
+            @ApiParameter(required = true, name = "userIds", desc = "以半角逗号分隔的售后id列表",
+                          serviceInjectName = "rma.userIds", serviceInjectDataType = LongArrayStringInjector.Data.class)
                     String userIds,
             @ApiParameter(required = false, name = "name", desc = "名称")
                     String name
@@ -182,9 +131,11 @@ public interface DemoService {
 
     @HttpApi(name = "demo.testApiInjectionR8", desc = "可以依赖与R6,R7的隐式返回值", security = SecurityType.None, owner = "demo")
     ComplexTestEntity testApiInjectionR8(
-            @ApiAutowired(value = AutowireableParameter.serviceInjection, serviceInject = SupplierIdInjector.class)
+            @ApiAutowired(value = AutowireableParameter.serviceInjection,
+                          serviceInjectName = "supplier.supplierIds", serviceInjectDataType = LongArrayStringInjector.Data.class)
                     String supplierIds,
-            @ApiParameter(required = false, name = "activityIds", desc = "以半角逗号分隔的活动页id列表", serviceInject = ActivityIdInjector.class)
+            @ApiParameter(required = false, name = "activityIds", desc = "以半角逗号分隔的活动页id列表",
+                          serviceInjectName = "cms.activityIds", serviceInjectDataType = LongArrayStringInjector.Data.class)
                     String activityIds,
             @ApiParameter(required = true, name = "name", desc = "名称")
                     String name
