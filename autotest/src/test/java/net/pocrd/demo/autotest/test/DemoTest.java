@@ -31,19 +31,19 @@ public class DemoTest {
     //    private static final String url          = "http://www.pocrd.net/m.api";
     private static final String deviceId     = "1414807058834";
     private static final String deviceSecret = "581bb3c7f2d09e4d2f07f69706fff13f261f4cfa2038cd2ab7bb46040ca2d568";
-    private static final String deviceToken  = "jxpvuVNWcYb75UlLHC3QyptGUwn0V+LDzdi/GMTLcmGN1rmpX80ze7hRE8peb0dbjfUWi52dEoaZy6YCJZcF9L4f+2gJXMjncRCFhGY3AHo=";
+    private static final String deviceToken  = "010r8q7HvgHpAqMRYuLX45W+tey5xX9db1sKo3ENCIYaJc4fGpDY4u61zlFfEiIkHtUk7Lx1XDazOleSZjrayFlv3v4WFI1sD+QIfqp5gRvUQvXh4OIWHDBF7OxKFMPyM3l";
     private static final long   userId       = 22L;
-    private static final String userToken    = "A/vUrHrdp/9Qs1SejYBFY/q/e6XGIWTAJzH0uWXNvrMsLPIMOkjxAVyODDeu+JLA3pm/ASMcOcnvlRTk8APu1xAWxMc019l2ijGJ+CLyaFs=";
+    private static final String userToken    = "110f0HUV7XXApEflwNpdBn0Yy9PVHmZ/TSA3TpoXB8+lLHqnwfHeo6BQpQSVSU19QAqHC9tfVQApfAZpJGFoPCOIRVazT7kSE38CGBi0Gs7eY0tPrfVZw10iLnt/N3yifhF";
 
     private ApiContext  context  = ApiContext.getDefaultContext("1", 123, "1.2.3");
     private ApiAccessor accessor = new ApiAccessor(context, 3000, 30000, "test-agent", url);
 
-    private void initWithDeviceInfo(ApiContext context) {
+    private void initWithDeviceInfo() {
         context.setDeviceInfo(deviceId, deviceSecret, deviceToken);
     }
 
-    private void initWithUserInfo(ApiContext context) {
-        initWithDeviceInfo(context);
+    private void initWithUserInfo() {
+        initWithDeviceInfo();
         context.setUserInfo(userId, userToken, Long.MAX_VALUE);
     }
 
@@ -74,7 +74,7 @@ public class DemoTest {
 
     @Test
     public void testRegistedDevice() {
-        initWithDeviceInfo(context);
+        initWithDeviceInfo();
         final Demo_TestRegistedDevice regiestedDevice = new Demo_TestRegistedDevice();
         accessor.fillApiResponse(regiestedDevice);
         Assert.assertEquals(ApiCode.SUCCESS, regiestedDevice.getReturnCode());
@@ -82,7 +82,7 @@ public class DemoTest {
 
     @Test
     public void testUserLogin() {
-        initWithUserInfo(context);
+        initWithUserInfo();
         Demo_TestUserLogin userLogin = new Demo_TestUserLogin();
         accessor.fillApiResponse(userLogin);
         Assert.assertEquals(ApiCode.SUCCESS, userLogin.getReturnCode());
@@ -93,7 +93,7 @@ public class DemoTest {
         final Demo_TestRedirect req = new Demo_TestRedirect("A", "456");
         accessor.fillApiResponse(req);
         String msg = req.getResponse();
-        Assert.assertEquals("PROD", msg);
+        Assert.assertTrue(msg.startsWith("<?xml"));
     }
 
     public static final Comparator<String> StringComparator = new Comparator<String>() {
@@ -148,6 +148,7 @@ public class DemoTest {
 
     @Test
     public void testMixer() {
+        initWithUserInfo();
         String v = "kkkpppnnnqqq";
         final Demo_SayHello req1 = new Demo_SayHello("abc");
         final Apitest_TestDemoSayHello req2 = new Apitest_TestDemoSayHello("abc");
@@ -169,6 +170,7 @@ public class DemoTest {
 
     @Test
     public void testMockObject() {
+        initWithUserInfo();
         final Demo_TestMock testMock = new Demo_TestMock("NAME");
         accessor.fillApiResponse(testMock);
         Api_DEMO_DemoEntity resp = testMock.getResponse();
@@ -179,6 +181,7 @@ public class DemoTest {
 
     @Test
     public void testShortCircuit() {
+        initWithUserInfo();
         final Demo_TestShortCircuit testMock = new Demo_TestShortCircuit("NAME");
         accessor.fillApiResponse(testMock);
         Api_DEMO_DemoEntity resp = testMock.getResponse();
@@ -189,6 +192,7 @@ public class DemoTest {
 
     @Test
     public void testMockService() {
+        initWithUserInfo();
         final Demo_TestMockService testMock = new Demo_TestMockService("NAME");
         accessor.fillApiResponse(testMock);
         Api_DEMO_DemoEntity resp = testMock.getResponse();
@@ -199,6 +203,7 @@ public class DemoTest {
 
     @Test
     public void testIgnoreParameterForSecurity() {
+        initWithUserInfo();
         final Demo_TestMockService testMock = new Demo_TestMockService("NAME");
         final Demo_TestIgnoreParameterForSecurity testIgnoreParameterForSecurity = new Demo_TestIgnoreParameterForSecurity("hahaha");
         final BaseRequest[] reqs = new BaseRequest[] { testMock, testIgnoreParameterForSecurity };
@@ -212,6 +217,7 @@ public class DemoTest {
     // _mt=r1:r2/r3@1,r2:r4,r3@1:r5,r3@2:r5,r4,r5,r6:r5,r7,r8:r6/r7
     @Test
     public void testDependencies() {
+        initWithUserInfo();
         Demo_TestApiInjectionR4 r4 = new Demo_TestApiInjectionR4();
         r4.setName("R4");
         Demo_TestApiInjectionR5 r5 = new Demo_TestApiInjectionR5("R5");
@@ -228,7 +234,7 @@ public class DemoTest {
 
         final BaseRequest[] reqs = new BaseRequest[] { r1, r2, r3_1, r3_2, r4, r5, r6, r7, r8 };
         accessor.fillApiResponse(reqs);
-        System.out.println("result:" + r1.getResponse());
+        System.out.println("result:" + r1.getResponse().serialize());
         checkResponse(r1.getResponse());
         checkResponse(r2.getResponse());
         checkResponse(r3_1.getResponse());

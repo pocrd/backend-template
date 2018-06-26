@@ -90,7 +90,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public RawString testRedirect(String something, String other) {
-        DubboExtProperty.setRedirectUrl("http://www.pocrd.com/info.api");
+        DubboExtProperty.setRedirectUrl("http://www.pocrd.net/info.api");
         return new RawString("testRedirect");
     }
 
